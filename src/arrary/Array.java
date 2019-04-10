@@ -5,9 +5,9 @@ package arrary;
  * @author: Mr.gong
  * @Data: 2019/3/30 11:43
  **/
-public class Array<T> {
+public class Array<E> {
     /** 数组内容. */
-    private T[] data;
+    private E[] data;
 
     /** 数组元素个数. */
     private int size;
@@ -17,7 +17,7 @@ public class Array<T> {
      * @param capacity
      */
     public Array(int capacity) {
-        data = (T[])new Object[capacity];
+        data = (E[])new Object[capacity];
         size = 0;
     }
 
@@ -57,9 +57,25 @@ public class Array<T> {
      * @param index
      * @return
      */
-    public T get(int index){
+    public E get(int index){
         checkIndex(index);
         return data[index];
+    }
+
+    /**
+     * 获取数组第一个元素
+     * @return
+     */
+    public E getFirst(){
+        return get(0);
+    }
+
+    /**
+     * 获取数组最后一个元素
+     * @return
+     */
+    public E getLast(){
+        return get(size - 1);
     }
 
     /**
@@ -67,7 +83,7 @@ public class Array<T> {
      * @param index
      * @param e
      */
-    public void set(int index,T e){
+    public void set(int index, E e){
         checkIndex(index);
         data[index] = e;
     }
@@ -77,7 +93,7 @@ public class Array<T> {
      * @param e
      * @return
      */
-    public boolean contains(T e){
+    public boolean contains(E e){
         for (int i = 0; i < size; i++){
             if (data[i].equals(e)){
                 return true;
@@ -91,7 +107,7 @@ public class Array<T> {
      * @param index
      * @param e
      */
-    public void add(int index,T e){
+    public void add(int index, E e){
         checkIndex(index);
         //数组容量满了
         if (size == data.length){
@@ -110,7 +126,7 @@ public class Array<T> {
      */
     private void resize(int capacity){
         //扩容,为原来的两倍
-        T[] newData = (T[]) new Object[capacity];
+        E[] newData = (E[]) new Object[capacity];
         for (int i = 0; i < size; i++){
             newData[i] = data[i];
         }
@@ -131,7 +147,7 @@ public class Array<T> {
      * 向所有元素前添加一个新元素
      * @param e
      */
-    public void addFirst(T e){
+    public void addFirst(E e){
         add(0,e);
     }
 
@@ -139,7 +155,7 @@ public class Array<T> {
      * 向所有元素后添加一个新元素
      * @param e
      */
-    public void addLast(T e){
+    public void addLast(E e){
         add(size,e);
     }
 
@@ -148,7 +164,7 @@ public class Array<T> {
      * @param e
      * @return
      */
-    public int find(T e){
+    public int find(E e){
         for (int i = 0; i < size; i++){
             if (data[i].equals(e)){
                 return i;
@@ -162,9 +178,9 @@ public class Array<T> {
      * @param index
      * @return
      */
-    public T remove(int index){
+    public E remove(int index){
         checkIndexForRemove(index);
-        T ret = data[index];
+        E ret = data[index];
         for (int i = index + 1; i < size; i++){
             data[i - 1] = data[i];
         }
@@ -189,22 +205,22 @@ public class Array<T> {
     /**
      * 删除第一个元素
      */
-    public void removeFirst(){
-        resize(0);
+    public E removeFirst(){
+        return remove(0);
     }
 
     /**
      * 删除最后一个元素
      */
-    public void removeLast(){
-        resize(size);
+    public E removeLast(){
+        return remove(size - 1);
     }
 
     /**
      * 从数组中删除元素e,有重复的e只删除一个e
      * @param e
      */
-    public void removeElement(T e){
+    public void removeElement(E e){
         int index = find(e);
         if (index != -1){
             remove(index);
@@ -215,14 +231,14 @@ public class Array<T> {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append(String.format("Array size = %d, capacity = %d \n", size, data.length));
-        builder.append('[');
+        builder.append('【');
         for (int i = 0; i < size; i++) {
             builder.append(data[i]);
             if (i != size - 1) {
                 builder.append(", ");
             }
         }
-        builder.append(']');
+        builder.append('】');
         return builder.toString();
     }
 }

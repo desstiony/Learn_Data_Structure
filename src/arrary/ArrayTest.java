@@ -1,12 +1,16 @@
 package arrary;
+
+import org.junit.Test;
+
 /**
  * @description: 测试array
  * @author: Mr.gong
  * @Data: 2019/3/30 11:43
  **/
-public class TestArray {
+public class ArrayTest {
 
-    public static void main(String[] args) {
+    @Test
+    public void arrayTest(){
         Array<Integer> arr = new Array<>();
         for (int i = 0; i < 10; i++) {
             arr.addLast(i);
