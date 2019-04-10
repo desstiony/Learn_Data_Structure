@@ -10,15 +10,15 @@ import arrary.Array;
 public class ArrayQueue<E> implements Queue<E> {
     private Array<E> array;
 
-    public ArrayQueue(int capacipy){
-        array = new Array<>(capacipy);
+    public ArrayQueue(int capacity){
+        array = new Array<>(capacity);
     }
 
     public ArrayQueue(){
         array = new Array<>();
     }
 
-    public int getCapacipy(){
+    public int getCapacity(){
         return array.getCapacity();
     }
     @Override
