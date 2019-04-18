@@ -12,7 +12,7 @@ import java.util.Random;
 public class ComparativeQueueEfficiencyTest {
 
     /** 操作数量. */
-    int opCount = 1000000;
+    int opCount = 100000;
 
     public double testQueue(Queue<Integer> q,int opCount){
         long startTime = System.nanoTime();
