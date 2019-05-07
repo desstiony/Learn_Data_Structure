@@ -14,4 +14,5 @@ void enqueue(E e);
 ```E dequeue();
 E getFront();
 int getSize();
-boolean isEmpty();```
+boolean isEmpty();
+```
